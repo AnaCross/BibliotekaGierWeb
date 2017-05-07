@@ -19,17 +19,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.wgrel.entities.Gra;
 import pl.wgrel.entities.Status;
 import pl.wgrel.services.BibliotekaServices;
+import pl.wgrel.services.NotificationService;
+import pl.wgrel.services.NotificationServiceImpl;
 
-/*
- * import pl.sternik.kk.week.entities.Moneta;
-import pl.sternik.kk.week.entities.Status;
-import pl.sternik.kk.week.services.KlaserService;
-import pl.sternik.kk.week.services.NotificationService;
- */
 @Controller
 public class BibliotekaController {
 	@Autowired
 	private BibliotekaServices bibliotekaService;
+	
+	@Autowired
+    private NotificationService notificationService;// = new NotificationServiceImpl();
 	
 	@ModelAttribute("statusyAll")
     public List<Status> populateStatusy() {
@@ -59,11 +58,6 @@ public class BibliotekaController {
     public List<Gra> populateGamesDouble() {
         return this.bibliotekaService.findAllDoublet();
     }
-
-    @ModelAttribute("gamesLast3")
-    public List<Gra> populateLast3Games() {
-        return this.bibliotekaService.findLatest3();
-    }
 	
 	@RequestMapping({ "/", "/index.html" })
     public String index(Model model) {
@@ -75,16 +69,15 @@ public class BibliotekaController {
         return "tosell";
     }
     
-    @RequestMapping("/gry/create")
-    public String showCreatePage() {
-        return "gra";
-    }
-    
-    @RequestMapping("/gry")
-    public String showLibraryPage() {
+//    @RequestMapping("/gry")
+//    public String showLibraryPage() {
+//        return "biblioteka";
+//    }
+     @RequestMapping(value = "/gry", method = RequestMethod.GET)
+     public String showMainPage(Model model) {
+        model.addAttribute("MyMessages",  notificationService.getNotificationMessages());
         return "biblioteka";
-    }
-    
+     }
     @RequestMapping("/double")
     public String showDoublePage() {
         return "double";

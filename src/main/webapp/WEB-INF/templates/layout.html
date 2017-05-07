@@ -16,12 +16,7 @@
     <a href="biblioteka.html" th:href="@{/gry}">Wszystkie gry</a>
     <a href="tosell.html" th:href="@{/tosell}">Gry do sprzedania</a>
     <a href="gra.html" th:href="@{/gry/create}">Dodaj grę</a>
-    <a href="double.html" th:href="@{/double}">Podwójne</a>
-   <!--  Zalogowany: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>  
-    <form th:action="@{/dupa}" method="POST" style="display: inline">
-        <input type=submit class="link" value="Wyloguj"/>
-    </form>
-    -->    
+    <a href="double.html" th:href="@{/double}">Podwójne</a> 
     <ul id="messages">
       <li th:each="msg : ${MyMessages}" th:text="${msg.text}"
            th:class="${#strings.toLowerCase(msg.type)}">
@@ -37,7 +32,7 @@
   </div>
 
   <footer th:fragment="site-footer"> 
-  Weronika Grela <a href="https://github.com/kkoziol/sternik-week"> Source code</a>
+  Weronika Grela <a href="https://github.com/AnaCross/BibliotekaGierWeb"> Source code</a>
   &copy; Sternik Biblioteka gier System, 2017 
   </footer>
 
