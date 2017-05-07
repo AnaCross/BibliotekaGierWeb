@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout ::site-head">
+<title>Podwójne gry</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/klaser.css" th:href="@{/css/klaser.css}" />
+</head>
+
+<body>
+  <header th:replace="layout :: site-header" />
+  <div>
+    <h2 th:text="#{title.list}" style="display: inline;">Lista gier</h2>
+  </div>
+  
+  <div class="listaGier" th:unless="${#lists.isEmpty(gamesDouble)}">
+    <table>
+      <thead>
+        <tr>
+          <th th:text="#{biblioteka.numerKatalogowy}">numerKatalogowy</th>
+          <th th:text="#{biblioteka.tytul}">tytul</th>
+          <th th:text="#{biblioteka.opis}">opis</th>
+          <th th:text="#{biblioteka.wydawnictwo}">wydawnictwo</th>
+          <th th:text="#{biblioteka.cenaNabycia}">cenaNabycia</th>
+          <th th:text="#{biblioteka.dataNabycia}">dataNabycia</th>
+          <th th:text="#{biblioteka.autor}">autor</th>
+          <th th:text="#{biblioteka.status}">status</th>
+          <th th:text="#{biblioteka.operacje}">operacje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="game : ${gamesDouble}">
+          <form action="#" th:action="@{/gry}" th:object="${game}" method="post">
+          <td th:text="${game.numerKatalogowy}">1</td>
+          <td th:text="${game.tytul}">Agricola</td>
+          <td th:text="${game.opis}">Długi opis</td>
+          <td th:text="${game.wydawnictwo}">Lacerta/Z-Man</td>
+          <td th:text="${{game.cenaNabycia}}">120</td>
+          <td th:text="${{game.dataNabycia}}">2011/13/01</td>
+          <td th:text="${game.autor}">Uwe Rosenberg</td>
+          <td th:text="#{${'biblioteka.status.' + game.status}}">Nowa</td>
+          <td>
+            <button type="submit" name="remove" th:value="${game.numerKatalogowy}" th:text="#{biblioteka.remove}">Dell</button>
+            
+            <a href="gra.html" th:href="@{|/gry/${game.numerKatalogowy}|}" ><button type="button" th:text="#{biblioteka.edit}">Edit</button></a>              
+          </td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer th:replace="layout :: site-footer" />
+</body>
+</html>
