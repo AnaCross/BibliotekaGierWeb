@@ -28,11 +28,12 @@ public class BibliotekaController {
 	private BibliotekaServices bibliotekaService;
 	
 	@Autowired
-    private NotificationService notificationService;// = new NotificationServiceImpl();
+    private NotificationService notificationService;
 	
 	@ModelAttribute("statusyAll")
     public List<Status> populateStatusy() {
         return Arrays.asList(Status.ALL);
+        /* HelloServlet  */
     }
 
     @ModelAttribute("gamesAll")
@@ -43,14 +44,6 @@ public class BibliotekaController {
     @ModelAttribute("gamesToSell")
     public List<Gra> populateGamesToSell() {
         List<Gra> result = this.bibliotekaService.findAllToSell();
-        if(result == null)
-        	System.out.println("NULL");
-        else
-        {
-        	System.out.println("List size: "+result.size());
-        	for(Gra gra : result)
-        		System.out.println("nrkat: "+gra.getNumerKatalogowy());
-        }
         return result;
     }
     
@@ -68,11 +61,6 @@ public class BibliotekaController {
     public String showToSellPage() {
         return "tosell";
     }
-    
-//    @RequestMapping("/gry")
-//    public String showLibraryPage() {
-//        return "biblioteka";
-//    }
      @RequestMapping(value = "/gry", method = RequestMethod.GET)
      public String showMainPage(Model model) {
         model.addAttribute("MyMessages",  notificationService.getNotificationMessages());

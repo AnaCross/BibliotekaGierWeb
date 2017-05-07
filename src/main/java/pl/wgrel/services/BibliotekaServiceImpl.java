@@ -37,7 +37,7 @@ public class BibliotekaServiceImpl implements BibliotekaServices {
 	}
 
 	@Override
-	public Optional<Gra> findById(int id) {
+	public Optional<Gra> findById(Long id) {
 		try {
             return Optional.of(bazaDanych.readById(id));
         } catch (NoSuchGraException e) {

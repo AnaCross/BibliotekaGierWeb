@@ -31,7 +31,7 @@ public class GryController {
     private BibliotekaServices bibliotekaService;
 
 	@Autowired
-    private NotificationService notificationService;// = new NotificationServiceImpl();
+    private NotificationService notificationService;
 
     @ModelAttribute("statusyAll")
     public List<Status> populateStatusy() {
@@ -39,7 +39,7 @@ public class GryController {
     }
 
     @RequestMapping(value = "/gry/{id}", method = RequestMethod.GET)
-    public String view(@PathVariable("id") int id, final ModelMap model) {
+    public String view(@PathVariable("id") Long id, final ModelMap model) {
         Optional<Gra> result;
         result = bibliotekaService.findById(id);
         if (result.isPresent()) {
@@ -55,7 +55,7 @@ public class GryController {
 
     @RequestMapping(value = "/gry/{id}/json", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Gra> viewAsJson(@PathVariable("id") int id, final ModelMap model) {
+    public ResponseEntity<Gra> viewAsJson(@PathVariable("id") Long id, final ModelMap model) {
         Optional<Gra> result;
         result = bibliotekaService.findById(id);
         if (result.isPresent()) {

@@ -12,8 +12,6 @@ public interface BibliotekaServices {
 
     List<Gra> findAllToSell();
 
-    Optional<Gra> findById(int id);
-
     Optional<Gra> create(Gra gra);
 
     Optional<Gra> edit(Gra gra);
@@ -21,4 +19,6 @@ public interface BibliotekaServices {
     Optional<Boolean> deleteById(Long id);
 
     List<Gra> findLatest3();
+
+	Optional<Gra> findById(Long id);
 }

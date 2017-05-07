@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Gra {
-	private int numerKatalogowy;
+	private Long numerKatalogowy;
 	private String tytul;
 	private String opis;
 	private String wydawnictwo;
@@ -15,7 +15,7 @@ public class Gra {
 	private String autor;
 	private Status status;
 	
-	public static Gra produceGra(int numerKatalogowy, String tytul, String opis, String wydawnictwo, BigDecimal cenaNabycia, Date dataNabycia, String autor, Status status){
+	public static Gra produceGra(Long numerKatalogowy, String tytul, String opis, String wydawnictwo, BigDecimal cenaNabycia, Date dataNabycia, String autor, Status status){
 		Gra gra = new Gra();
 		gra.numerKatalogowy = numerKatalogowy;
 		gra.tytul = tytul;
@@ -28,11 +28,11 @@ public class Gra {
 		return gra;
 	}
 
-	public int getNumerKatalogowy() {
+	public Long getNumerKatalogowy() {
 		return numerKatalogowy;
 	}
 
-	public void setNumerKatalogowy(int numerKatalogowy) {
+	public void setNumerKatalogowy(Long numerKatalogowy) {
 		this.numerKatalogowy = numerKatalogowy;
 	}
 
@@ -93,6 +93,8 @@ public class Gra {
 	}
 
 	
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -100,7 +102,7 @@ public class Gra {
 		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
 		result = prime * result + ((cenaNabycia == null) ? 0 : cenaNabycia.hashCode());
 		result = prime * result + ((dataNabycia == null) ? 0 : dataNabycia.hashCode());
-		result = prime * result + numerKatalogowy;
+		result = prime * result + ((numerKatalogowy == null) ? 0 : numerKatalogowy.hashCode());
 		result = prime * result + ((opis == null) ? 0 : opis.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((tytul == null) ? 0 : tytul.hashCode());
@@ -132,7 +134,10 @@ public class Gra {
 				return false;
 		} else if (!dataNabycia.equals(other.dataNabycia))
 			return false;
-		if (numerKatalogowy != other.numerKatalogowy)
+		if (numerKatalogowy == null) {
+			if (other.numerKatalogowy != null)
+				return false;
+		} else if (!numerKatalogowy.equals(other.numerKatalogowy))
 			return false;
 		if (opis == null) {
 			if (other.opis != null)

@@ -33,7 +33,7 @@
           <span th:if="${#fields.hasErrors('tytul')}" th:errors="*{tytul}">Incorrect tytul</span>
         </div>
         <div>
-          <label for="opis"> <span th:text="#{biblioka.opis}">opis</span>
+          <label for="opis"> <span th:text="#{biblioteka.opis}">opis</span>
           </label> <input type="text" th:field="*{opis}" th:errorclass="fieldError" />
         </div>
         <div>
@@ -41,11 +41,11 @@
           </label> <input type="text" th:field="*{wydawnictwo}" th:errorclass="fieldError" />
         </div>
         <div>
-          <label for="cenaNabycia"> <span th:text="#{bibliotka.cenaNabycia}">cenaNabycia</span>
+          <label for="cenaNabycia"> <span th:text="#{biblioteka.cenaNabycia}">cenaNabycia</span>
           </label> <input type="text" th:field="*{cenaNabycia}" th:errorclass="fieldError" />
         </div>
         <div>
-          <label for="dataNabycia"> <span th:text="#{biblioka.dataNabycia}">Date kup</span> (<span
+          <label for="dataNabycia"> <span th:text="#{biblioteka.dataNabycia}">Date kup</span> (<span
             th:text="#{date.format}">YYYY/MM/DD</span>)
           </label> <input type="text" th:field="*{dataNabycia}" th:errorclass="fieldError" />
         </div>

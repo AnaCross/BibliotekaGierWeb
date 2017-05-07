@@ -1,8 +1,5 @@
 package pl.wgrel;
 
-import javax.servlet.Filter;
-
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import pl.wgrel.web.SpringWebConfig;
@@ -33,13 +30,5 @@ public class SpringWebApplicationInitializer extends AbstractAnnotationConfigDis
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
-
-/*    @Override
-    protected Filter[] getServletFilters() {
-        final CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
-        encodingFilter.setEncoding(CHARACTER_ENCODING);
-        encodingFilter.setForceEncoding(false);
-        return new Filter[] { encodingFilter };
-    }*/
 
 }
